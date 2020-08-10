@@ -1,25 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import firbaeCofig from './firConfig/Config'
+import firebase from 'firebase/app'
+import 'react-toastify/dist/ReactToastify.css';
+import 'firebase/database'
+import 'firebase/storage'
+import 'firebase/auth'
+
+import UserDetailsProvider from './Context/UserDetailsProvider'
+import CoockBookApp from './components/CoockBookApp'
+import { ToastContainer } from 'react-toastify';
+import PostProvider from './Context/PostProvider'
+
+
+firebase.initializeApp(firbaeCofig)
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserDetailsProvider>
+      <PostProvider>
+          
+              <ToastContainer/>
+              <CoockBookApp/>
+         
+      </PostProvider>
+    </UserDetailsProvider>
   );
 }
 
